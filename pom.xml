@@ -34,15 +34,15 @@
         </configuration>
       </plugin>
 
-      <!-- Added Maven WAR Plugin to configure WAR file generation -->
+      <!-- Maven WAR Plugin to configure WAR file generation -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.3.1</version>
         <configuration>
-          <!-- Define the webapp directory (optional if your resources are in src/main/webapp) -->
+          <failOnMissingWebXml>false</failOnMissingWebXml> <!-- Disable web.xml requirement -->
           <warSourceDirectory>src/main/webapp</warSourceDirectory>
-          <outputDirectory>${project.build.directory}</outputDirectory> <!-- Default location for WAR file -->
+          <outputDirectory>${project.build.directory}</outputDirectory>
         </configuration>
       </plugin>
     </plugins>
