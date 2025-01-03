@@ -1,25 +1,15 @@
 package com.coveros.demo.helloworld;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-@WebServlet("/helloworld")  // Mapping the servlet to /helloworld
-public class HelloWorld extends javax.servlet.http.HttpServlet {
+public class HelloWorld {
 
-    @Override
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws ServletException, IOException {
-        // Set the content type to HTML
-        response.setContentType("text/html");
+  public static void main(final String[] args) {
+    final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("h:mm:ss a 'on' MMMM d, yyyy'.'");
+    final LocalDateTime now = LocalDateTime.now();
 
-        // Get the PrintWriter to send content back to the client
-        PrintWriter out = response.getWriter();
+    System.out.println("Hello, World! The current time is " + dtf.format(now));
+  }
 
-        // Output the message
-        out.println("<html><body>");
-        out.println("<h1>Hello, World!</h1>");
-        out.println("</body></html>");
-    }
 }
-
