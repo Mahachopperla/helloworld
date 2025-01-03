@@ -7,7 +7,7 @@
   <groupId>com.coveros.demo</groupId>
   <artifactId>helloworld</artifactId>
   <version>1.1</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging> <!-- Changed packaging from jar to war -->
 
   <name>Hello World</name>
   <description>The most basic of Java programs.</description>
@@ -31,6 +31,18 @@
         <configuration>
           <source>${jdk.version}</source>
           <target>${jdk.version}</target>
+        </configuration>
+      </plugin>
+
+      <!-- Added Maven WAR Plugin to configure WAR file generation -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.1</version>
+        <configuration>
+          <!-- Define the webapp directory (optional if your resources are in src/main/webapp) -->
+          <warSourceDirectory>src/main/webapp</warSourceDirectory>
+          <outputDirectory>${project.build.directory}</outputDirectory> <!-- Default location for WAR file -->
         </configuration>
       </plugin>
     </plugins>
